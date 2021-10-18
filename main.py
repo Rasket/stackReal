@@ -1,4 +1,6 @@
 #realization of stack on python
+import unittest
+
 
 class nodeManager():
 	def __init__ (self, *values):
@@ -18,7 +20,18 @@ class nodeManager():
 		return self.data_all.__str__()
 
 
+class TestnodeManager(unittest.TestCase):
+
+	def setUp(self):
+		self.stack = nodeManager()
+
+	def test_add_node(self):
+		self.assertEqual(str(self.stack.addElem(123)), '[123]')
+
+
+
 cal = nodeManager(123)
+print(str(cal))
 cal.addElem(123)
-print(cal)
+
 
