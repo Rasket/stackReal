@@ -10,7 +10,10 @@ class nodeManager():
 		self.head = len(self.data_all)
 	
 	def getElem(self):
-		return data_all.pop()
+		try:
+			return self.data_all.pop()
+		except:
+			return None
 
 	def addElem(self, data):
 		self.head = len(self.data_all)
@@ -26,12 +29,19 @@ class TestnodeManager(unittest.TestCase):
 		self.stack = nodeManager()
 
 	def test_add_node(self):
-		self.assertEqual(str(self.stack.addElem(123)), '[123]')
+		self.stack.addElem(123)
+		self.assertEqual(str(self.stack), '[123]')
+
+	def test_get_elem(self):
+		self.stack.addElem(123)
+		self.assertEqual(self.stack.getElem(), 123)
 
 
 
 cal = nodeManager(123)
-print(str(cal))
+print(cal.getElem())
 cal.addElem(123)
+
+unittest.main()
 
 
